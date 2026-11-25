@@ -23,12 +23,12 @@ Use one actual situation. Include the observation data, derived facts, selected 
 
 | Scenario | Predicted result | Observed result and short evidence / remaining issue |
 |---|---|---|
-| Normal loop and restart | | |
-| Carrying cargo | | |
-| Hidden / remembered pickup | | |
-| Target taken | | |
-| Unreachable target | | |
-| No usable pickup | | |
+| Normal loop and restart | Survey, collect, bank, continue, finish, restart| Works like intended afaik|
+| Carrying cargo | Return to base| Works like intended, besides when target is taken.|
+| Hidden / remembered pickup | Place in memory when spotted, ignore hidden pickups that haven't been seen yet| |
+| Target taken | Release target, target 2nd highest prio and pursue. Repeat if 2nd target taken as well.| Takes 2nd highest prio but gets stuck|
+| Unreachable target | Ignore unreachable target| Locks on to the unreachable target and gets stuck|
+| No usable pickup | Explore map and return to base if no found| Keeps exploring and never returns to base|
 
 Supplied test result, with any added tests identified:
 Live walkthrough checked by / recording link if used:
