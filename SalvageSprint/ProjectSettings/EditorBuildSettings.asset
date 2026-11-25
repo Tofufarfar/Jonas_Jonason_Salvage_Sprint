@@ -23,6 +23,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/SalvageSprint/Generated/Scenes/06_NoSalvage.unity
     guid: 88ec840cc8f8e7045a920f54c442d3de
-  m_configObjects:
-    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: ced50197d6bc1fb409ba90b8a6897d49, type: 3}
+  m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
