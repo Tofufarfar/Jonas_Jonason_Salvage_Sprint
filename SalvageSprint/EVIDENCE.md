@@ -45,7 +45,7 @@ Use one actual situation. Include the observation data, derived facts, selected 
 22 / 22
 
 ### Live walkthrough checked by / recording link if used:
-Not used
+Uploaded to the assignment submit
 
 ## One correction and one independent check
 
