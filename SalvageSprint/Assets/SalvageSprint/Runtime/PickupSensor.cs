@@ -72,7 +72,7 @@ namespace SalvageSprint
                     available: true,
                     visible: visible,
                     remembered: remembered,
-                    blocked: pickupIsBlocked));
+                    unreachable: pickupIsBlocked));
             }
             return new Observation(actor.Carrying, rememberedId, candidates.ToArray());
         }

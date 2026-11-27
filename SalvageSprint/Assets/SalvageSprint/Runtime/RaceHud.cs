@@ -46,7 +46,7 @@ namespace SalvageSprint
                 int visible = 0, remembered = 0, blocked = 0;
                 if (rival.LastObservation.Candidates != null)
                     foreach (Candidate c in rival.LastObservation.Candidates)
-                    { if (c.Visible) visible++; if (c.Remembered) remembered++; if (c.Blocked) blocked++; }
+                    { if (c.Visible) visible++; if (c.Remembered) remembered++; if (c.Unreachable) blocked++; }
                 GUI.Label(new Rect(30, height - 138, width - 60, 25),
                     match.ScenarioName + "  |  " + DecisionPolicy.Label, text);
                 GUI.Label(new Rect(30, height - 112, width - 60, 25),
