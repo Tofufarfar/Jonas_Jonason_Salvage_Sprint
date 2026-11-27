@@ -2395,8 +2395,8 @@ Transform:
   m_GameObject: {fileID: 1037451085}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4, y: 1.1, z: 0}
-  m_LocalScale: {x: 1.2, y: 2.2, z: 9}
+  m_LocalPosition: {x: 4, y: 1.1, z: 2.55}
+  m_LocalScale: {x: 1.2, y: 2.2, z: 17.3601}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1737001111}
@@ -3752,6 +3752,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: SalvageSprint.Runtime::SalvageSprint.PickupSensor
   match: {fileID: 278848907}
   radius: 10
+  ShowPerceptionRange: 0
+  showSightChecks: 0
+  sighCheckDisplaySeconds: 0.4
 --- !u!114 &1832890760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3764,6 +3767,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57722a64d01dced64664b00e2e94b0bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: SalvageSprint.Runtime::SalvageSprint.Navigator
+  failedRequestRetryDelay: 1
+  logNavigationFailures: 1
+  lastFailure: None
 --- !u!195 &1832890761
 NavMeshAgent:
   m_ObjectHideFlags: 0

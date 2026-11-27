@@ -9,16 +9,16 @@ namespace SalvageSprint.Core
     {
         public readonly int Id;
         public readonly float DistanceSquared; // Squared distance to the candidate, for efficiency.
-        public readonly bool Available, Visible, Remembered, Blocked;
+        public readonly bool Available, Visible, Remembered, Unreachable;
         
-        public Candidate(int id, float distanceSquared, bool available, bool visible, bool remembered = false, bool blocked = false)
+        public Candidate(int id, float distanceSquared, bool available, bool visible, bool remembered = false, bool unreachable = false)
         {
             Id = id;
             DistanceSquared = distanceSquared;
             Available = available;
             Visible = visible;
             Remembered = remembered;
-            Blocked = blocked;
+            Unreachable = unreachable;
         }
     }
 

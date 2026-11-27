@@ -8,29 +8,36 @@ namespace SalvageSprint.Core
     {
         public const string Label = "Part 1 starter: nearest candidate";
 
+        static bool IsEligble(Candidate candidate)
+        {
+            return candidate.Available && (candidate.Visible || candidate.Remembered) && !candidate.Unreachable;
+        }
+
         // Infer the agent's facts from its observation. This is a simple, naive implementation that ignores visibility and memory.
         public static AgentFacts Infer(Observation observation)
         {
             if (observation.Carrying)
                 return new AgentFacts(true, -1, false);
 
+            foreach (Candidate candidate in observation.Candidates)
+            {
+                if (candidate.Id == observation.CurrentTargetId && IsEligble(candidate))
+                {
+                    return new AgentFacts(false, candidate.Id, true);
+                }
+            }
+
             int nearest = -1;
             float distance = float.PositiveInfinity;
             foreach (Candidate candidate in observation.Candidates)
             {
-                // if (!(candidate.Visible && candidate.Remembered) || candidate.Blocked)
-                // {
-                //     continue;
-                // }
-
-                if (candidate.Available && (candidate.Visible || candidate.Remembered) && candidate.DistanceSquared < distance)
+                
+                if (IsEligble(candidate) && candidate.DistanceSquared < distance)
                 {
                     nearest = candidate.Id; 
                     distance = candidate.DistanceSquared;
                 }
-                // Deliberately naive: ignores Visible, Remembered and Blocked.
-                // if (candidate.Available && candidate.DistanceSquared < distance)
-                // {  }
+                
             }
             return new AgentFacts(false, nearest, false);
         }
@@ -42,9 +49,18 @@ namespace SalvageSprint.Core
             // Deliberately naive: ignores RetainedTarget and any other facts.
             if (facts.NeedsDelivery)
                 return new Decision(TaskKind.Deliver, -1, "Cargo held: return to depot");
-            return facts.HasUsableTarget
-                ? new Decision(TaskKind.Collect, facts.SelectedTargetId, "Nearest candidate; reselected each tick")
-                : new Decision(TaskKind.Explore, -1, "No candidate: visit the next survey point");
+
+            if (!facts.HasUsableTarget)
+            {
+                return new Decision(TaskKind.Explore, -1, "No eligible known pickup: visist the next survey point");
+            }
+
+            string reason = facts.RetainedTarget
+                ? "Retaining current eligible target"
+                : "Nearest eligble known pickup";
+
+            return new Decision(TaskKind.Collect, facts.SelectedTargetId, reason);
+
         }
     }
 }
